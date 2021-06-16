@@ -1,6 +1,7 @@
 import { Paper } from '@material-ui/core'
 import {makeStyles} from "@material-ui/core/styles"
 import React from 'react'
+import {Draggable} from "react-beautiful-dnd"
 
 const useStyle = makeStyles((theme) => ({
     card: {
@@ -8,11 +9,16 @@ const useStyle = makeStyles((theme) => ({
         margin:theme.spacing(1)
     }
 }))
-export const Card = ({card}) => {
+export const Card = ({card,index}) => {
     const classes = useStyle()
     return (
-        <div>
-            <Paper className={classes.card}>{card.title}</Paper>
-        </div>
+        <Draggable draggableId={card.id} index={index}>
+            {(provided) => (
+               <div ref={provided.innerRef} {...provided.dragHandleProps} {...provided.draggableProps}>
+                <Paper className={classes.card}>{card.title}</Paper>
+              </div>
+            )}
+          
+        </Draggable>
     )
 }

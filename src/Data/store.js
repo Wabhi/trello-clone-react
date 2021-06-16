@@ -32,8 +32,13 @@ const cards = [
         title: 'React Hooks',
         cards,
       },
+      'list-2': {
+        id: 'list-2',
+        title: 'React LifeCycle',
+        cards:[]
+      },
     },
-    listIds: ['list-1'],
+    listIds: ['list-1','list-2'],
   };
   
   export default data;
