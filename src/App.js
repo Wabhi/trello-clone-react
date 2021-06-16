@@ -40,8 +40,10 @@ function App() {
     setData(newState)
   }
   return (
+    <>
+    <div className="App">TRELLO CLONE WITH REACT AND MATERIAL UI</div>
     <storeApi.Provider value={{addMoreCard}}>
-    <div className={classes.root}>
+      <div className={classes.root}>
       {data.listIds.map((listId) => {
         const list = data.lists[listId];
         return <Lists list={list} key={listId} />
@@ -52,7 +54,8 @@ function App() {
         <InputContainer />
         <InputContainer />
     </div>
-    </storeApi.Provider>  
+    </storeApi.Provider>
+    </>  
   );
 }
 

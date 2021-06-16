@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 50px;
+  color: tomato;
 }
 
 .App-logo {
