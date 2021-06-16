@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Typography, InputBase } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 import MoreHoriz from "@material-ui/icons/MoreHoriz"
+import storeApi from '../../Data/storeApi'
 
 const useStyle = makeStyles((theme) => ({
     editableStyleHorizen: {
@@ -21,22 +22,33 @@ const useStyle = makeStyles((theme) => ({
     }
 }))
 
-export const Title = ({title}) => {
+export const Title = ({title,listId}) => {
     //state value to make editable or not...........
     const [text, setText] = useState(false)
+    //to chnage the title means edit the title.........
+    const [newText, setNewText] = useState(title)
+    const {upadeteListTitle} = useContext(storeApi)
     const classes = useStyle()
+    const handleInputChange = (e) => {
+        setNewText(e.target.value)
+    }
+    const handleBlure = () => {
+        upadeteListTitle(newText,listId)
+        setText(false)
+    }
     return (
         <div>
             {
                 text ?
                     (<div>
                         <InputBase
-                            value={title}
+                            onChange={handleInputChange}
+                            value={newText}
                             inputProps={{
                                 className:classes.input
                             }}
                             fullWidth
-                            onBlur={()=>setText(!text)}
+                            onBlur={handleBlure}
                         />
                         
                     </div>)

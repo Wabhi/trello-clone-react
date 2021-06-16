@@ -17,7 +17,7 @@ const useStyle = makeStyles((theme) => ({
 function App() {
   const [data, setData] = useState(store)
   const classes = useStyle()
-  //add more card in cardlist..................
+  //add more card in cardlist...........................................................
   const addMoreCard = (title,listId) => {
     //console.log(title,listId)
     const newCardId = uuid()
@@ -39,20 +39,50 @@ function App() {
     }
     setData(newState)
   }
+  //add more list...........................................................................
+  const addMoreList = (title) => {
+    //console.log('clicked!!!!!!!!!!!!')
+    //creating new list id...
+    const newListId = uuid()
+    //creating new list...
+    const newList = {
+      id: newListId,
+      title,
+      cards:[]
+    }
+    //creating new state...
+    const newState = {
+      listIds: [...data.listIds, newListId],
+      lists: {
+        ...data.lists,
+        [newListId]:newList
+      }
+    }
+    setData(newState)
+  }
+  //change the listTitle/make list title editable........................................
+  const upadeteListTitle = (title, listId) => {
+    console.log('clicked')
+    const list = data.lists[listId]
+    list.title = title
+    const newState = {
+      lists: {
+        ...data.lists,
+        [listId]:list
+      }
+    }
+    setData(newState)
+  }
   return (
     <>
     <div className="App">TRELLO CLONE WITH REACT AND MATERIAL UI</div>
-    <storeApi.Provider value={{addMoreCard}}>
+    <storeApi.Provider value={{addMoreCard,addMoreList,upadeteListTitle}}>
       <div className={classes.root}>
       {data.listIds.map((listId) => {
         const list = data.lists[listId];
         return <Lists list={list} key={listId} />
       })}
-        <InputContainer />
-        <InputContainer />
-        <InputContainer />
-        <InputContainer />
-        <InputContainer />
+          <InputContainer type="list"/>
     </div>
     </storeApi.Provider>
     </>  
