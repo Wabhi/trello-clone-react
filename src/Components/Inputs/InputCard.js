@@ -7,10 +7,10 @@ import storeApi from '../../Data/storeApi'
 const useStyle = makeStyles((theme) => ({
     card: {
         margin: theme.spacing(0, 1, 1, 1),
-        paddingBottom:theme.spacing(5)
+        paddingBottom: theme.spacing(5),
     },
     input: {
-        margin:theme.spacing(1)
+        margin: theme.spacing(1),
     },
     btn: {
         background: "#1b75bc",
@@ -25,7 +25,7 @@ export const InputCard = ({ setOpen,listId,type }) => {
     const {addMoreCard,addMoreList} = useContext(storeApi)
     const classes = useStyle()
     const handleChange = (e) => {
-        setTitle(e.target.value)
+        setTitle(e.target.value.toUpperCase())
     }
     const handleAddButton = () => {
         if (type === "card") {

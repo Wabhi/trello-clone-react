@@ -29,12 +29,12 @@ const cards = [
     lists: {
       'list-1': {
         id: 'list-1',
-        title: 'React Hooks',
+        title: 'REACT HOOKS',
         cards,
       },
       'list-2': {
         id: 'list-2',
-        title: 'React LifeCycle',
+        title: 'REACT LIFECYCLE',
         cards:[]
       },
     },

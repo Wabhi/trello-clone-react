@@ -13,7 +13,7 @@ const useStyle = makeStyles((theme) => ({
         margin: theme.spacing(0, 1, 1, 1),
         background: "#1fa643",
         fontSize: "1.2rem",
-        fontWeight:"bold",
+        fontWeight: "bold",
         "&:hover": {
             backgroundColor:fade('#000',0.25)
         }

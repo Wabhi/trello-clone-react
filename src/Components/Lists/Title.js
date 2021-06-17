@@ -12,13 +12,14 @@ const useStyle = makeStyles((theme) => ({
     editableStyle: {
         flexGrow: 1,
         fontSize: "1.2rem",
-        fontWeight:"bold"
+        fontWeight: "bold",
+        //textTransform:"uppercase"
     },
     input: {
         margin: theme.spacing(1),
         "&:focus": {
-            background:"#fae878"
-        }
+            background: "#fae878"
+        },
     }
 }))
 
@@ -30,7 +31,9 @@ export const Title = ({title,listId}) => {
     const {upadeteListTitle} = useContext(storeApi)
     const classes = useStyle()
     const handleInputChange = (e) => {
+        //e.target.value = ("" + e.target.value).toUpperCase();
         setNewText(e.target.value)
+        //console.log(e.target.value.toUpperCase())
     }
     const handleBlure = () => {
         upadeteListTitle(newText,listId)
